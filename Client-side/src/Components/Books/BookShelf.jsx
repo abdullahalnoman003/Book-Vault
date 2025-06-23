@@ -39,7 +39,7 @@ const BookShelf = () => {
   const filteredBooks =
     selectedCategory === "All"
       ? books
-      : books.filter((book) => book.reading_status === selectedCategory);
+      : books.filter((book) => book.book_category === selectedCategory);
 
   if (loading) {
     return (
@@ -66,10 +66,13 @@ const BookShelf = () => {
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
-          <option value="All">All Status</option>
-          <option>Read</option>
-          <option>Reading</option>
-          <option>Want-to-Read</option>
+          <option value="All">All Categories</option>
+          <option>Fantasy</option>
+          <option>Mystery</option>
+          <option>Fiction</option>
+          <option>Biography</option>
+          <option>Non-Fiction</option>
+          <option>Sci-Fi</option>
         </select>
       </div>
 

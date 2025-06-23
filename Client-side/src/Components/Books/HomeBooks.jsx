@@ -71,7 +71,7 @@ const HomeBooks = () => {
               <img
                 src={book.cover_photo}
                 alt={book.book_title}
-                className="w-full object-fill"
+                className="w-full h-[556px] object-cover max-sm:h-[480px]"
               />
             </div>
             <div className="p-5 flex flex-col justify-between flex-grow">

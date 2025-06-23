@@ -17,7 +17,7 @@ const slides = [
     description: "Visualize your reading goals and grow your personal library.",
   },
   {
-    img: "https://i.ibb.co/TxLyx2LF/image.png",
+    img: "https://i.ibb.co/NgCrjJzg/image.png",
     title: "Write Reviews & Share",
     description: "Connect with fellow readers by sharing your thoughts on books.",
   },
@@ -27,7 +27,7 @@ const slides = [
     description: "Organize books as Read, Reading, or Want to Read — all in one place.",
   },
   {
-    img: "https://i.ibb.co/d0KmThQV/image.png",
+    img: "https://i.ibb.co/S4YN9Yym/image.png",
     title: "Join the BookVault Community",
     description: "Engage, explore, and elevate your reading experience.",
   },
