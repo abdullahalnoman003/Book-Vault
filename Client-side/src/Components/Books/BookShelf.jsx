@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const categoryColors = {
   Fiction: "bg-purple-400",
@@ -43,7 +44,7 @@ const BookShelf = () => {
 
   if (loading) {
     return (
-      <div className="h-screen w-full flex items-center justify-center bg-base-200">
+      <div className="min-h-screen w-full flex items-center justify-center bg-base-200">
         <div className="text-center space-y-3">
           <span className="loading loading-bars loading-lg text-primary"></span>
           <p className="text-xl font-semibold text-yellow-800">
@@ -56,9 +57,16 @@ const BookShelf = () => {
 
   return (
     <div className="max-w-7xl my-23 mx-auto p-4 ">
-      <h1 className="text-4xl font-extrabold tracking-wide text-center mb-10 text-primary drop-shadow-md">
-        📚 All Books
+      <Helmet>
+        <title>📚 Bookshelf | Book Vault</title>
+      </Helmet>
+      <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
+        📚 Explore the Library
       </h1>
+      <p className="text-center text-lg text-base-content mb-10">
+        Discover every book at your fingertips – filtered and ready
+        to read.
+      </p>
 
       <div className="flex justify-center mb-8">
         <select
@@ -103,7 +111,8 @@ const BookShelf = () => {
                 <span className="font-medium">Author:</span> {book.book_author}
               </p>
               <p className="text-sm  mb-1">
-                <span className="font-medium">Category:</span> {book.book_category}
+                <span className="font-medium">Category:</span>{" "}
+                {book.book_category}
               </p>
               <p className="text-sm text-pink-600 font-semibold mb-4">
                 Upvotes: {book.upvote || 0}

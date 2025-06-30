@@ -5,6 +5,7 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const MyBooks = () => {
   const { user } = useContext(AuthContext);
@@ -84,7 +85,7 @@ const MyBooks = () => {
 
   if (loading) {
     return (
-      <div className="h-80 w-full flex items-center justify-center bg-base-200 rounded-xl mt-8">
+      <div className="h-80 min-h-screen w-full flex items-center justify-center bg-base-200 rounded-xl mt-8">
         <div className="text-center space-y-3">
           <span className="loading loading-bars loading-lg text-primary"></span>
           <p className="text-xl font-semibold text-yellow-800">
@@ -97,7 +98,15 @@ const MyBooks = () => {
 
   return (
     <div className="max-w-7xl my-25 mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold text-center mb-6">📚 My Bookshelf</h2>
+      <Helmet>
+        <title>My Books | Book Vault</title>
+      </Helmet>
+      <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
+        📘 My Collection
+      </h1>
+      <p className="text-center text-lg text-base-content mb-10">
+        Manage your uploaded books and keep your personal shelf organized.
+      </p>
 
       {books.length === 0 ? (
         <div className="text-center mt-10 space-y-4">

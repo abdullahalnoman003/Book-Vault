@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { motion } from "framer-motion";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../Firebase/firebase.init";
+import { Helmet } from "react-helmet-async";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -37,20 +38,23 @@ const ForgotPassword = () => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: error.message
+          text: error.message,
         });
       });
   };
 
   return (
     <motion.div
-      className="min-h-screen flex items-center justify-center px-2"
+      className="min-h-screen  flex items-center justify-center px-2"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
+      <Helmet>
+        <title>Reset Password | Book Vault</title>
+      </Helmet>
       <motion.div
-        className="w-full max-w-md shadow-2xl border border-primary rounded-2xl p-8 bg-base-100"
+        className="w-2xl  shadow-2xl border border-primary rounded-2xl p-8 bg-base-100"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
@@ -61,7 +65,12 @@ const ForgotPassword = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          Reset Your Password
+          <h1 className="text-3xl max-md:text-2xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
+            🔁 Reset Your Password
+          </h1>
+          <p className="text-center text-lg text-base-content mb-10">
+            Don’t worry! We’ll help you recover access to your account quickly.
+          </p>
         </motion.h2>
 
         <form onSubmit={handleReset} className="space-y-4">

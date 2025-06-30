@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
 import axios from "axios";
 import FuzzyText from "../../Animation/FuzzyText";
+import { motion } from "framer-motion";
 
 const HomeBooks = () => {
   const [books, setBooks] = useState([]);
@@ -47,15 +48,10 @@ const HomeBooks = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 mt-10">
-      
       <h2 className="flex justify-center">
-        <FuzzyText
-        baseIntensity={0.1}
-        hoverIntensity={0.25}
-        enableHover={true}
-      >
-        Trending Reads
-      </FuzzyText>
+        <FuzzyText baseIntensity={0.1} hoverIntensity={0.25} enableHover={true}>
+          Trending Reads
+        </FuzzyText>
       </h2>
       <p className="text-center text-gray-500 font-medium mt-1">
         Most liked books by our readers
@@ -63,15 +59,25 @@ const HomeBooks = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
         {topBooks.map((book) => (
-          <div
+          <motion.div
             key={book._id}
-            className="bg-base-100 border border-primary rounded-xl shadow-lg hover:shadow-xl transition-transform duration-300 hover:scale-[1.02] overflow-hidden flex flex-col"
+            data-aos="zoom-out-up"
+            whileHover={{
+              scale: 1.03,
+              boxShadow: "0px 12px 24px rgba(0, 0, 0, 0.2)",
+              y: -4,
+            }}
+            transition={{
+              duration: 0.25,
+              ease: "easeOut",
+            }}
+            className="bg-base-100 border border-primary rounded-xl shadow-lg overflow-hidden flex flex-col"
           >
             <div className="w-full h-fit">
               <img
                 src={book.cover_photo}
                 alt={book.book_title}
-                className="w-full h-[556px] object-cover max-sm:h-[480px]"
+                className="w-full h-[356px] object-cover max-sm:h-[480px]"
               />
             </div>
             <div className="p-5 flex flex-col justify-between flex-grow">
@@ -108,7 +114,7 @@ const HomeBooks = () => {
                 <Tooltip id={`details-${book._id}`} place="bottom" />
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 

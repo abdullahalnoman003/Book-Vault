@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { FaBookOpen } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 const FeaturedCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -29,7 +30,7 @@ const FeaturedCategories = () => {
   if (loading) {
     return (
       <div className="text-center my-10">
-        <span className="loading loading-dots loading-lg text-primary"></span>
+        <span className=" loading loading-dots loading-lg text-primary"></span>
       </div>
     );
   }
@@ -45,9 +46,20 @@ const FeaturedCategories = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {categories.map((cat) => (
-          <div
+          <motion.div
             key={cat.category}
-            className="group bg-base border-3 border-primary rounded-2xl shadow-lg p-6  text-center hover:bg-primary hover:text-white transition duration-300 transform hover:-translate-y-1 hover:shadow-2xl"
+            data-aos="zoom-in-up"
+            whileHover={{
+              y: -10,
+              backgroundColor: "#f78100",
+              color: "#ffffff",
+              boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+            }}
+            transition={{
+              duration: 0.2, // ⏱️ Faster (previously it was spring-based and slow)
+              ease: "easeOut", // 💨 Smooth ease-out
+            }}
+            className="group bg-base border-3 border-primary rounded-2xl shadow-lg p-6 text-center"
           >
             <div className="flex justify-center items-center mb-4 text-primary group-hover:text-white">
               <FaBookOpen className="text-4xl" />
@@ -56,7 +68,7 @@ const FeaturedCategories = () => {
             <p className="mt-2 text-sm">
               {cat.count} {cat.count === 1 ? "book" : "books"} available
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const UpdateBook = () => {
   const { id } = useParams();
@@ -19,12 +20,12 @@ const UpdateBook = () => {
       .catch((err) => {
         console.error("Error fetching book:", err);
         Swal.fire({
-                    icon: "error",
-                    title: "Error!",
-                    text: "Could not load book!",
-                    timer: 2000,
-                    showConfirmButton: false,
-                  });
+          icon: "error",
+          title: "Error!",
+          text: "Could not load book!",
+          timer: 2000,
+          showConfirmButton: false,
+        });
         navigate("/my-books");
       });
   }, [id, navigate]);
@@ -57,7 +58,10 @@ const UpdateBook = () => {
     };
 
     axios
-      .put(`https://book-vault-server-six.vercel.app/update-book/${id}`, updatedBook)
+      .put(
+        `https://book-vault-server-six.vercel.app/update-book/${id}`,
+        updatedBook
+      )
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           Swal.fire({
@@ -75,7 +79,7 @@ const UpdateBook = () => {
             text: "No changes were made.",
             timer: 2000,
             showConfirmButton: false,
-          });;
+          });
         }
       })
       .catch((error) => {
@@ -86,9 +90,16 @@ const UpdateBook = () => {
 
   return (
     <div className="max-w-3xl mx-auto  my-20 p-6 bg-base-200 rounded-2xl shadow-md">
-      <h2 className="text-3xl font-bold text-center mb-6 text-primary">
-        ✏️ Update Book ✏️
-      </h2>
+      <Helmet>
+        <title>Update Your Book | Book Vault</title>
+      </Helmet>
+      <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
+        ✏️ Update Book Info
+      </h1>
+      <p className="text-center text-lg text-base-content mb-10">
+        Keep your book details accurate and up to date for everyone to enjoy.
+      </p>
+
       <h1 className="font-bold text-center text-xl mb-2">
         Modify the details to update your book!
       </h1>

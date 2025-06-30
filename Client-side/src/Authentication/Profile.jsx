@@ -11,6 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { Helmet } from "react-helmet-async";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A28BFE"];
 
@@ -87,6 +88,9 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen py-30 bg-base-200 px-4 ">
+      <Helmet>
+        <title>Profile | Book Vault</title>
+      </Helmet>
       <div className="max-w-4xl mx-auto">
         {/* Profile Card */}
         <div className="card bg-base-100 shadow-xl p-6 mb-10">

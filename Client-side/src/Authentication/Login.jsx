@@ -11,6 +11,7 @@ import { FaEye } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { auth } from "../Firebase/firebase.init";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const provider = new GoogleAuthProvider();
@@ -105,12 +106,15 @@ const Login = () => {
 
   return (
     <motion.div
-      className="min-h-screen flex my-25 justify-center items-center py-10 px-4"
+      className="min-h-screen flex my-25 justify-center items-center py-8 px-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
+      <Helmet>
+        <title>Login | Book Vault</title>
+      </Helmet>
       <motion.div
         className="grid md:grid-cols-2 shadow-xl rounded-3xl border border-primary max-w-4xl w-full overflow-hidden"
         initial={{ scale: 0.95, opacity: 0 }}
@@ -134,10 +138,14 @@ const Login = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-bold text-center text-secondary mb-6">
-            Welcome Back! <br />
-            <span className="text-2xl">Login to Your Account</span>
-          </h2>
+          <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
+            🔐 Welcome Back!
+          </h1>
+          <p className="text-center text-lg text-base-content mb-10">
+            Login to access your personalized library and manage your favorite
+            books.
+          </p>
+
           <form onSubmit={handleEmailLogin} className="space-y-4">
             <div className="form-control">
               <label className="label font-medium">Email</label>

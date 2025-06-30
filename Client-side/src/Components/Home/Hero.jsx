@@ -47,7 +47,7 @@ const Hero = () => {
                 </button>
               </Link>
               <Link to="/add-book">
-                <button className="btn btn-outline btn-secondary gap-2">
+                <button className="btn btn-outline btn-accent gap-2">
                   <FaPlusCircle /> Add a Book
                 </button>
               </Link>

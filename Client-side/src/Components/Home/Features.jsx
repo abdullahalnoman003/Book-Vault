@@ -17,6 +17,7 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           viewport={{ once: true }}
+          data-aos="zoom-in-right"
         >
           <FaBookmark className="text-3xl text-primary mb-3 mx-auto" />
           <h3 className="font-semibold text-lg">Track Progress</h3>
@@ -32,6 +33,7 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
           viewport={{ once: true }}
+          data-aos="zoom-out-down"
         >
           <FaPenFancy className="text-3xl text-secondary mb-3 mx-auto" />
           <h3 className="font-semibold text-lg">Write Reviews</h3>
@@ -47,6 +49,7 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
           viewport={{ once: true }}
+          data-aos="zoom-in-left"
         >
           <FaChartLine className="text-3xl text-yellow-500 mb-3 mx-auto" />
           <h3 className="font-semibold text-lg">Dashboard</h3>

@@ -41,7 +41,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-lg fixed top-0 z-50 ">
+    <div className="navbar bg-base-100/80 backdrop-blur-xl  shadow-lg fixed top-0 z-50 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -78,19 +78,28 @@ const Navbar = () => {
                 Bookshelf
               </NavLink>
             </li>
+            {user && (
+              <>
+                <li>
+                  <NavLink to="/add-book" className="btn">
+                    Add Book
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/my-books" className="btn">
+                    My Books
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/profile" className="btn">
+                    My Profile
+                  </NavLink>
+                </li>
+              </>
+            )}
             <li>
-              <NavLink to="/add-book" className="btn">
-                Add Book
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/my-books" className="btn">
-                My Books
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/profile" className="btn">
-                My Profile
+              <NavLink to="/about-us" className="btn">
+                About Us
               </NavLink>
             </li>
           </ul>
@@ -118,19 +127,28 @@ const Navbar = () => {
               Bookshelf
             </NavLink>
           </li>
+          {user && (
+            <>
+              <li>
+                <NavLink to="/add-book" className="btn border border-primary">
+                  Add Book
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/my-books" className="btn border border-primary">
+                  My Books
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/profile" className="btn border border-primary">
+                  My Profile
+                </NavLink>
+              </li>
+            </>
+          )}
           <li>
-            <NavLink to="/add-book" className="btn border border-primary">
-              Add Book
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/my-books" className="btn border border-primary">
-              My Books
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/profile" className="btn border border-primary">
-              My Profile
+            <NavLink to="/about-us" className="btn border border-primary">
+              About Us
             </NavLink>
           </li>
         </ul>

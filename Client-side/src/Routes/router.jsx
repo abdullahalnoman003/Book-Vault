@@ -20,78 +20,109 @@ import Slider from "../Components/Home/Slider";
 import UpdateBook from "../Components/Books/UpdateBook";
 import HomeBooks from "../Components/Books/HomeBooks";
 import FeaturedCategories from "../Components/Home/FeaturedCategories";
-
+import AboutUs from "../Components/T&C/AboutUs";
 
 const router = createBrowserRouter([
-    {
-        path:"/",
-        Component: HomeLayout,
-        children:[
-            {
-                 index: true,
-                 element:(
-                    <>
-                    <Hero></Hero>
-                    <Features></Features>
-                    <Slider></Slider>
-                    <HomeBooks></HomeBooks>
-                    <FeaturedCategories></FeaturedCategories>
-                    <CallToAction></CallToAction>
-                    </>
-                 ),        
-        },
-        {
-            path:"/login",
-            element: <PublicRoute><Login></Login></PublicRoute>,
-        },
-        {
-            path:"/register",
-            element: <PublicRoute><Register></Register></PublicRoute> ,
-        },
-        {
-            path:"/profile",
-            element: <PrivateRoute> <Profile></Profile> </PrivateRoute>  ,
-        },
-        {
-            path:"/bookshelf",
-            element: <BookShelf></BookShelf> ,
-        },
-        {
-            path:"/add-book",
-            element: <PrivateRoute><AddBooks></AddBooks></PrivateRoute>  ,
-        },
-        {
-            path:"/my-books",
-            element: <PrivateRoute><MyBooks></MyBooks></PrivateRoute>  ,
-        },
-        {
-            path:"/book-details/:id",
-            element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>  ,
-        },
-        {
-            path:"/update-book/:id",
-            element: <PrivateRoute> <UpdateBook></UpdateBook> </PrivateRoute>  ,
-        },
-        {
-            path:"/privacy",
-            element: <Privacy></Privacy> ,
-        },
-        {
-            path:"/terms",
-            element: <Terms></Terms> ,
-        },
-                {
-            path:"/forgot-password",
-            element: <ForgotPassword></ForgotPassword> ,
-        },
-        
-           
-
-        ]
-    },
-    {
-            path:"/*",
-            element:<NotFound></NotFound>,
-        },
-])
+  {
+    path: "/",
+    Component: HomeLayout,
+    children: [
+      {
+        index: true,
+        element: (
+          <>
+            <Hero></Hero>
+            <Features></Features>
+            <Slider></Slider>
+            <HomeBooks></HomeBooks>
+            <FeaturedCategories></FeaturedCategories>
+            <CallToAction></CallToAction>
+          </>
+        ),
+      },
+      {
+        path: "/login",
+        element: (
+          <PublicRoute>
+            <Login></Login>
+          </PublicRoute>
+        ),
+      },
+      {
+        path: "/register",
+        element: (
+          <PublicRoute>
+            <Register></Register>
+          </PublicRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Profile></Profile>{" "}
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/bookshelf",
+        element: <BookShelf></BookShelf>,
+      },
+      {
+        path: "/add-book",
+        element: (
+          <PrivateRoute>
+            <AddBooks></AddBooks>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-books",
+        element: (
+          <PrivateRoute>
+            <MyBooks></MyBooks>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/book-details/:id",
+        element: (
+          <PrivateRoute>
+            <BookDetails></BookDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update-book/:id",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <UpdateBook></UpdateBook>{" "}
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/privacy",
+        element: <Privacy></Privacy>,
+      },
+      {
+        path: "/terms",
+        element: <Terms></Terms>,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword></ForgotPassword>,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs></AboutUs>,
+      },
+    ],
+  },
+  {
+    path: "/*",
+    element: <NotFound></NotFound>,
+  },
+]);
 export default router;

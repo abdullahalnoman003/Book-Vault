@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import { auth } from "../Firebase/firebase.init";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -97,19 +98,23 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen  flex items-center justify-center px-4 my-6">
+    <div className="min-h-screen flex items-center justify-center px-4 my-6">
+      <Helmet>
+        <title>Register | Book Vault</title>
+      </Helmet>
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.4 }}
         className="w-full max-w-2xl bg-base-100 border-2 border-primary shadow-2xl rounded-2xl p-10"
       >
-        <h2 className="text-3xl font-bold text-center text-secondary mb-8">
-          Welcome to BookVault! <br />
-          <span className="text-2xl text-emerald-600">
-            Let't create Your Account
-          </span>
-        </h2>
+        <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
+          📝 Join the Library
+        </h1>
+        <p className="text-center text-lg text-base-content mb-10">
+          Sign up to start exploring, saving, and sharing your favorite reads.
+        </p>
+
         <h3 className="text-base text-center font-bold">
           Please fill up the form!
         </h3>
