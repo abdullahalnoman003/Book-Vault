@@ -48,10 +48,13 @@ const HomeBooks = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 mt-10">
+      <h2 className="text-center font-bold text-primary text-4xl pb-2 min-sm:hidden">Trending Reads</h2>
       <h2 className="flex justify-center">
-        <FuzzyText baseIntensity={0.1} hoverIntensity={0.25} enableHover={true}>
+        
+      <div className="max-sm:hidden"><FuzzyText baseIntensity={0.1} hoverIntensity={0.25} enableHover={true}>
           Trending Reads
-        </FuzzyText>
+        </FuzzyText></div>  
+      
       </h2>
       <p className="text-center text-gray-500 font-medium mt-1">
         Most liked books by our readers
@@ -61,7 +64,7 @@ const HomeBooks = () => {
         {topBooks.map((book) => (
           <motion.div
             key={book._id}
-            data-aos="zoom-out-up"
+            data-aos="zoom-in"
             whileHover={{
               scale: 1.03,
               boxShadow: "0px 12px 24px rgba(0, 0, 0, 0.2)",
