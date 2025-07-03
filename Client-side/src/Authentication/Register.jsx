@@ -98,7 +98,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 my-6">
+    <div className="min-h-screen flex items-center justify-center px-4 my-6 max-md:py-15">
       <Helmet>
         <title>Register | Book Vault</title>
       </Helmet>
@@ -106,7 +106,7 @@ const Register = () => {
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="w-full max-w-2xl bg-base-100 border-2 border-primary shadow-2xl rounded-2xl p-10"
+        className="w-full max-w-2xl  bg-base-100 border-2 border-primary shadow-2xl rounded-2xl p-10"
       >
         <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
           📝 Join the Library
