@@ -51,15 +51,14 @@ const FeaturedCategories = () => {
             data-aos="zoom-in-up"
             whileHover={{
               y: -10,
-              backgroundColor: "#f78100",
               color: "#ffffff",
               boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
             }}
             transition={{
-              duration: 0.2, // ⏱️ Faster (previously it was spring-based and slow)
-              ease: "easeOut", // 💨 Smooth ease-out
+              duration: 0.2,
+              ease: "easeOut",
             }}
-            className="group bg-base border-3 border-primary rounded-2xl shadow-lg p-6 text-center"
+            className="group hover:bg-primary hover:border-white border-3 border-primary rounded-2xl shadow-2xl p-6 text-center"
           >
             <div className="flex justify-center items-center mb-4 text-primary group-hover:text-white">
               <FaBookOpen className="text-4xl" />
