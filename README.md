@@ -84,26 +84,93 @@ BookVault is designed to help readers **organize**, **review**, and **share** th
 
 All protected APIs use Firebase Access Token sent as a `Bearer` token in HTTP-only cookies.
 
+
+## ⚙️ Getting Started
+
+Follow the steps below to run **BookVault** locally on your machine.
+
 ---
-## 🔑 Environment Variables
 
-**Client .env**
-```env
-VITE_FIREBASE_API_KEY=your_key
-VITE_FIREBASE_AUTH_DOMAIN=your_domain
-...
+### 📁 Clone the Repository
+
+```bash
+git clone https://github.com/abdullahalnoman003/Book-Vault.git
+cd Book-Vault
 ```
 
-**Server .env**
-```env
-PORT=3000
-DB_USER=your_user
-DB_PASSWORD=your_password
+---
 
-FIREBASE_PROJECT_ID=your_project_id
-FIREBASE_PRIVATE_KEY="your_private_key"
-FIREBASE_CLIENT_EMAIL=your_firebase_email
-```
+### 🖥️ Backend Setup (Server)
+
+1. Navigate to the server directory:
+
+   ```bash
+   cd Server-side
+   ```
+
+2. Install server dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Create a `.env` file in the `Server-side/` directory using the following template:
+
+   ```env
+   PORT=3000
+   DB_USER=your_db_user
+   DB_PASSWORD=your_db_password
+
+   FIREBASE_PROJECT_ID=your_project_id
+   FIREBASE_PRIVATE_KEY="your_private_key"
+   FIREBASE_CLIENT_EMAIL=your_firebase_client_email
+   ```
+
+4. Start the server:
+
+   ```bash
+   pnpm run dev
+   ```
+
+---
+
+### 🌍 Frontend Setup (Client)
+
+1. Open a new terminal tab or window and go to the client folder:
+
+   ```bash
+   cd Client-side
+   ```
+
+2. Install frontend dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Create a `.env` file in the `client/` directory:
+
+   ```env
+   VITE_FIREBASE_API_KEY=your_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+   VITE_FIREBASE_PROJECT_ID=your_project_id
+   VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+   VITE_FIREBASE_APP_ID=your_app_id
+   ```
+
+4. Start the client app:
+
+   ```bash
+   pnpm run dev
+   ```
+
+---
+
+### ✅ Access the App
+
+* Frontend: [http://localhost:5173](http://localhost:5173)
+* Backend (API): [http://localhost:3000](http://localhost:3000)
 
 ---
 
