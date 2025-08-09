@@ -86,7 +86,7 @@ const MyBooks = () => {
 
   if (loading) {
     return (
-      <div className="h-80 min-h-screen w-full flex items-center justify-center bg-base-200 rounded-xl mt-8">
+      <div className="h-80 min-h-screen w-full flex items-center justify-center  rounded-xl mt-8">
         <div className="text-center space-y-3">
           <span className="loading loading-bars loading-lg text-primary"></span>
           <p className="text-xl font-semibold text-yellow-800">
