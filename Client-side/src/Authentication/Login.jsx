@@ -106,18 +106,8 @@ const Login = () => {
   };
 
   return (
-    <motion.div
-    style={{
-                backgroundImage: `url(https://i.postimg.cc/4dJCP098/pexels-pixabay-235985.jpg)`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover", 
-                backgroundPosition: "center",
-              }}
-      className="min-h-screen flex py-25 justify-center items-center bg-base-400 px-4 "
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+    <div
+      className="min-h-screen flex py-25 justify-center items-center bg-base-400 px-4"
     >
       <motion.div
         className="grid md:grid-cols-2 shadow-2xl rounded-3xl border border-primary/20 max-w-4xl w-full overflow-hidden backdrop-blur-2xl"
@@ -145,14 +135,14 @@ const Login = () => {
           <h1 className="text-4xl font-extrabold text-center mb-2 text-secondary drop-shadow-md">
             🔐 Welcome Back!
           </h1>
-          <p className="text-center text-black text-lg mb-10">
+          <p className="text-center  text-lg mb-10">
             Login to access your personalized library and manage your favorite
             books.
           </p>
 
           <form onSubmit={handleEmailLogin} className="space-y-4">
             <div className="form-control">
-              <label className="label font-medium text-black">Email</label>
+              <label className="label font-medium ">Email</label>
               <input
                 type="email"
                 name="email"
@@ -163,7 +153,7 @@ const Login = () => {
             </div>
 
             <div className="form-control">
-              <label className="label font-medium text-black">Password</label>
+              <label className="label font-medium ">Password</label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -204,7 +194,7 @@ const Login = () => {
             <motion.button
               type="button"
               onClick={handleGoogleSignin}
-              className="btn btn-outline w-full flex items-center justify-center gap-2 hover:bg-accent-content text-black hover:text-white"
+              className="btn btn-outline w-full flex items-center justify-center gap-2 hover:bg-accent-content  hover:text-white"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -224,7 +214,7 @@ const Login = () => {
           </form>
         </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
