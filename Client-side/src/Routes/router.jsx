@@ -87,11 +87,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/book-details/:id",
-        element: (
-         
-            <BookDetails></BookDetails>
-          
-        ),
+        element: <BookDetails></BookDetails>,
       },
       {
         path: "/update-book/:id",
@@ -118,11 +114,11 @@ const router = createBrowserRouter([
         path: "/about-us",
         element: <AboutUs></AboutUs>,
       },
+      {
+        path: "/*",
+        element: <NotFound></NotFound>,
+      },
     ],
-  },
-  {
-    path: "/*",
-    element: <NotFound></NotFound>,
   },
 ]);
 export default router;
