@@ -78,7 +78,6 @@ async function run() {
         const books = await BooksCollection.find(query)
           .sort(sortOption)
           .toArray();
-
         res.send(books);
       } catch (error) {
         res.status(500).send({ message: "Error fetching books" });
