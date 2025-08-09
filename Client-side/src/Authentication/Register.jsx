@@ -100,13 +100,8 @@ const Register = () => {
 
   return (
     <div
-    style={{
-            backgroundImage: `url("https://i.postimg.cc/4dJCP098/pexels-pixabay-235985.jpg")`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover", 
-            backgroundPosition: "center",
-          }}
-    className="min-h-screen py-25 flex items-center justify-center px-4 -mb-4 max-md:py-15">
+    
+    className="min-h-screen flex py-25 justify-center items-center bg-base-400 px-4">
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -116,7 +111,7 @@ const Register = () => {
         <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
           📝 Join the Library
         </h1>
-        <p className="text-center  text-lg text-black font-semibold mb-10">
+        <p className="text-center  text-lg  font-semibold mb-10">
           Sign up to start exploring, saving, and sharing your favorite reads.
         </p>
 
@@ -127,7 +122,7 @@ const Register = () => {
           {/* Name */}
           <div>
             <label className="label">
-              <span className="label-text text-black font-medium">Full Name</span>
+              <span className="label-text  font-medium">Full Name</span>
             </label>
             <input
               name="name"
@@ -141,7 +136,7 @@ const Register = () => {
           {/* Email */}
           <div>
             <label className="label">
-              <span className="label-text text-black font-medium">Email</span>
+              <span className="label-text  font-medium">Email</span>
             </label>
             <input
               name="email"
@@ -155,7 +150,7 @@ const Register = () => {
           {/* Photo URL */}
           <div>
             <label className="label">
-              <span className="label-text text-black font-medium">Photo URL</span>
+              <span className="label-text  font-medium">Photo URL</span>
             </label>
             <input
               name="photo"
@@ -168,7 +163,7 @@ const Register = () => {
           {/* Password */}
           <div>
             <label className="label">
-              <span className="label-text  text-black font-medium">Password</span>
+              <span className="label-text   font-medium">Password</span>
             </label>
             <input
               name="password"
@@ -207,7 +202,7 @@ const Register = () => {
             Already have an account?{" "}
             <Link
               to="/login"
-              className="text-black font-bold hover:underline hover:text-secondary-content duration-300"
+              className=" font-bold hover:underline hover:text-secondary duration-300"
             >
               Login here
             </Link>

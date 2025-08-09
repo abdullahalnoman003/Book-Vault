@@ -11,11 +11,12 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { Helmet } from "react-helmet-async";
+import useDocumentTitle from "../Hooks/useDocumentTitle";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A28BFE"];
 
 const Profile = () => {
+  useDocumentTitle("Profile | Book Vault");
   const { user } = useContext(AuthContext);
   const [name, setName] = useState(user?.displayName || "");
   const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
@@ -88,9 +89,6 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen py-30 bg-base-200 px-4 ">
-      <Helmet>
-        <title>Profile | Book Vault</title>
-      </Helmet>
       <div className="max-w-4xl mx-auto">
         {/* Profile Card */}
         <div className="card bg-base-100 shadow-xl p-6 mb-10">
@@ -130,7 +128,7 @@ const Profile = () => {
               className="btn btn-primary w-full"
               disabled={loading}
             >
-              {loading ? "Updating..." : "Update Profile"}
+              {loading ? <p className="loading text-black"></p> : "Update Profile"}
             </button>
           </form>
         </div>
