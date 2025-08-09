@@ -44,7 +44,9 @@ const verifyFireBaseToken = async (req, res, next) => {
   } catch (error) {
     return res
       .status(401)
-      .send({ message: "Unauthorized Access! You can not get the data Boss :)" });
+      .send({
+        message: "Unauthorized Access! You can not get the data Boss :)",
+      });
   }
 };
 
@@ -56,9 +58,33 @@ async function run() {
     //Get requests
 
     app.get("/bookshelf", async (req, res) => {
-      const books = await BooksCollection.find().toArray();
-      res.send(books);
+      try {
+        const { category, search, sort } = req.query;
+        const query = {};
+        if (category && category !== "All") {
+          query.book_category = category;
+        }
+        if (search) {
+          query.$or = [
+            { book_title: { $regex: search, $options: "i" } },
+            { book_author: { $regex: search, $options: "i" } },
+          ];
+        }
+        let sortOption = {};
+        if (sort === "title-asc") sortOption.book_title = 1;
+        else if (sort === "title-desc") sortOption.book_title = -1;
+        else if (sort === "upvote-desc") sortOption.upvote = -1;
+        else if (sort === "upvote-asc") sortOption.upvote = 1;
+        const books = await BooksCollection.find(query)
+          .sort(sortOption)
+          .toArray();
+
+        res.send(books);
+      } catch (error) {
+        res.status(500).send({ message: "Error fetching books" });
+      }
     });
+
     app.get("/top-liked-books", async (req, res) => {
       const sortBooks = await BooksCollection.find({})
         .sort({ upvote: -1 })
