@@ -3,15 +3,12 @@ import { Link } from 'react-router';
 import { FaHome } from 'react-icons/fa';
 import Lottie from 'lottie-react';
 import Animation from './Animation.json';
-import { Helmet } from 'react-helmet-async';
-
+import useDocumentTitle from '../../Hooks/useDocumentTitle';
 const NotFound = () => {
-        
+        useDocumentTitle("404 Page Not Found")
   return (
     <>
-    <Helmet>
-            <title>Opps! Page Not Found!</title>
-          </Helmet>
+    
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 text-center px-4">
       <Lottie className='shadow-2xl  rounded-4xl' animationData={Animation} loop={true}/>
       <h1 className="text-7xl font-extrabold text-gray-800 mb-2 mt-5">404</h1>
