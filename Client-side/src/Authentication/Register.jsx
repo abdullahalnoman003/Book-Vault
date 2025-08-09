@@ -12,9 +12,10 @@ import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import { auth } from "../Firebase/firebase.init";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import useDocumentTitle from "../Hooks/useDocumentTitle";
 
 const Register = () => {
+  useDocumentTitle("Register | Book Vault")
   const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
   const [loading, setLoading] = useState(false);
@@ -24,7 +25,7 @@ const Register = () => {
       <div className="h-screen w-full flex items-center justify-center bg-base-200">
         <div className="text-center space-y-3">
           <span className="loading loading-bars loading-lg text-primary"></span>
-          <p className="text-xl font-semibold  text-yellow-800">
+          <p className="text-xl font-semibold  text-primary">
             Registration in progress <br />
             Please Wait...
           </p>
@@ -98,20 +99,24 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 my-6 max-md:py-15">
-      <Helmet>
-        <title>Register | Book Vault</title>
-      </Helmet>
+    <div
+    style={{
+            backgroundImage: `url("https://i.postimg.cc/4dJCP098/pexels-pixabay-235985.jpg")`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover", 
+            backgroundPosition: "center",
+          }}
+    className="min-h-screen py-25 flex items-center justify-center px-4 -mb-4 max-md:py-15">
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="w-full max-w-2xl  bg-base-100 border-2 border-primary shadow-2xl rounded-2xl p-10"
+        className="w-full max-w-2xl backdrop-blur-md border-2 border-primary shadow-2xl rounded-2xl p-10"
       >
         <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
           📝 Join the Library
         </h1>
-        <p className="text-center text-lg text-base-content mb-10">
+        <p className="text-center  text-lg text-black font-semibold mb-10">
           Sign up to start exploring, saving, and sharing your favorite reads.
         </p>
 
@@ -122,13 +127,13 @@ const Register = () => {
           {/* Name */}
           <div>
             <label className="label">
-              <span className="label-text  font-medium">Full Name</span>
+              <span className="label-text text-black font-medium">Full Name</span>
             </label>
             <input
               name="name"
               type="text"
               placeholder="Your name"
-              className="input input-bordered w-full input-accent"
+              className="input input-bordered  w-full input-accent"
               required
             />
           </div>
@@ -136,7 +141,7 @@ const Register = () => {
           {/* Email */}
           <div>
             <label className="label">
-              <span className="label-text font-medium">Email</span>
+              <span className="label-text text-black font-medium">Email</span>
             </label>
             <input
               name="email"
@@ -150,7 +155,7 @@ const Register = () => {
           {/* Photo URL */}
           <div>
             <label className="label">
-              <span className="label-text font-medium">Photo URL</span>
+              <span className="label-text text-black font-medium">Photo URL</span>
             </label>
             <input
               name="photo"
@@ -163,7 +168,7 @@ const Register = () => {
           {/* Password */}
           <div>
             <label className="label">
-              <span className="label-text font-medium">Password</span>
+              <span className="label-text  text-black font-medium">Password</span>
             </label>
             <input
               name="password"
@@ -202,7 +207,7 @@ const Register = () => {
             Already have an account?{" "}
             <Link
               to="/login"
-              className="text-secondary hover:underline hover:text-orange-400 duration-300"
+              className="text-black font-bold hover:underline hover:text-secondary-content duration-300"
             >
               Login here
             </Link>
