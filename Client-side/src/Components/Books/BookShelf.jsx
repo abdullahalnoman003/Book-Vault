@@ -14,17 +14,18 @@ const categoryColors = {
 };
 
 const BookShelf = () => {
-  useDocumentTitle("📚 Bookshelf | Book Vault");
+  useDocumentTitle("Bookshelf | Book Vault");
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loader, setLoader] = useState(false);
 
   // Filters
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("default");
 
-
   useEffect(() => {
+    setLoader(true);
     axios
       .get("https://book-vault-server-six.vercel.app/bookshelf", {
         params: {
@@ -35,6 +36,7 @@ const BookShelf = () => {
       })
       .then((res) => {
         setBooks(res.data);
+        setLoader(false);
         setLoading(false);
       })
       .catch((error) => {
@@ -44,6 +46,7 @@ const BookShelf = () => {
           text: "Failed to load books!",
           footer: error.message,
         });
+        setLoader(false);
         setLoading(false);
       });
   }, [selectedCategory, searchTerm, sortOption]);
@@ -69,7 +72,7 @@ const BookShelf = () => {
       <p className="text-center text-lg text-base-content mb-10">
         Discover every book at your fingertips – filtered, searched, and sorted!
       </p>
-      
+
       <div className="flex flex-col sm:flex-row justify-center  place-items-center gap-4 mb-8">
         <select
           className="select select-bordered w-full max-w-xs"
@@ -103,8 +106,12 @@ const BookShelf = () => {
           <option value="upvote-asc">Least Upvoted</option>
         </select>
       </div>
-      {books.length === 0 ? (
-        <p className="text-center text-lg font-semibold text-gray-500">
+      {loader ? (
+        <div className="flex justify-center h-screen items-center py-10">
+          <span className="loading loading-spinner loading-lg text-primary"></span>
+        </div>
+      ) : books.length === 0 ? (
+        <p className="text-center h-screen place-content-center text-lg font-semibold text-gray-500">
           No books found matching your search/filter.
         </p>
       ) : (
@@ -132,7 +139,8 @@ const BookShelf = () => {
                   {book.book_title}
                 </h2>
                 <p className="text-sm mb-1">
-                  <span className="font-medium">Author:</span> {book.book_author}
+                  <span className="font-medium">Author:</span>{" "}
+                  {book.book_author}
                 </p>
                 <p className="text-sm mb-1">
                   <span className="font-medium">Category:</span>{" "}
