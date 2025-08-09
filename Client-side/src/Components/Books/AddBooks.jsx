@@ -1,13 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
-import { Helmet } from "react-helmet-async";
+import useDocumentTitle from "../../Hooks/useDocumentTitle";
 
 const AddBook = () => {
+  useDocumentTitle("Add Books | Book Vault");
+  const [clicked, setClicked] =useState(false);
   const { user } = useContext(AuthContext);
-
   const handleSubmit = (e) => {
+    setClicked(true);
     e.preventDefault();
     const form = e.target;
 
@@ -39,6 +41,7 @@ const AddBook = () => {
             timer: 2000,
             showConfirmButton: false,
           });
+          setClicked(false);
           form.reset();
         } else {
           Swal.fire({
@@ -46,175 +49,146 @@ const AddBook = () => {
             title: "Failed!",
             text: "Could not add the book. Try again.",
           });
+          setClicked(false);
         }
       })
       .catch((error) => {
         Swal.fire("Error", error.message, "error");
-        console.error(error);
+        setClicked(false);
       });
   };
 
   return (
-    <div>
-      <Helmet>
-        <title>Add Books | Book Vault</title>
-      </Helmet>
-      <div className="max-w-3xl mx-auto my-25 p-6 bg-base-200 rounded-2xl shadow-md">
-        <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
-          📚 Add a New Book
-        </h1>
-        <p className="text-center text-lg text-base-content mb-10">
-          Share your collection with the world by adding a new book to the
-          shelf.
-        </p>
+  <div>
+    <div className="max-w-5xl  mx-auto my-20  p-8 bg-base-200 rounded-2xl shadow-md">
+      <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
+        📚 Add a New Book
+      </h1>
+      <p className="text-center text-lg text-base-content mb-8">
+        Share your collection with the world by adding a new book to the shelf.
+      </p>
 
-        <h1 className="font-bold  text-center text-xl mb-2">
-          Fill up the Details page to add Books!
-        </h1>
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Book Title */}
-          <div>
-            <label className="label font-semibold">Book Title</label>
-            <input
-              type="text"
-              name="book_title"
-              required
-              className="input input-bordered w-full"
-              placeholder="Enter book title"
-            />
-          </div>
+      <h2 className="font-bold text-center text-xl mb-6">
+        Fill up the Details to Add Books!
+      </h2>
 
-          {/* Cover Photo */}
-          <div>
-            <label className="label font-semibold">Cover Photo URL</label>
-            <input
-              type="text"
-              name="cover_photo"
-              required
-              className="input input-bordered w-full"
-              placeholder="Paste cover image URL"
-            />
-          </div>
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label className="label font-semibold">Book Title</label>
+          <input
+            type="text"
+            name="book_title"
+            required
+            className="input input-bordered w-full"
+            placeholder="Enter book title"
+          />
+        </div>
+        <div>
+          <label className="label font-semibold">Cover Photo URL</label>
+          <input
+            type="text"
+            name="cover_photo"
+            required
+            className="input input-bordered w-full"
+            placeholder="Paste cover image URL"
+          />
+        </div>
+        <div>
+          <label className="label font-semibold">Total Pages</label>
+          <input
+            type="number"
+            name="total_page"
+            required
+            className="input input-bordered w-full"
+            placeholder="e.g. 300"
+          />
+        </div>
+        <div>
+          <label className="label font-semibold">Book Author</label>
+          <input
+            type="text"
+            name="book_author"
+            required
+            className="input input-bordered w-full"
+            placeholder="Author name"
+          />
+        </div>
+        <div>
+          <label className="label font-semibold">Your Email</label>
+          <input
+            type="email"
+            name="user_email"
+            value={user?.email || ""}
+            readOnly
+            className="input input-bordered w-full bg-base-100 text-base-content"
+          />
+        </div>
+        <div>
+          <label className="label font-semibold">Your Name</label>
+          <input
+            type="text"
+            name="user_name"
+            value={user?.displayName || ""}
+            readOnly
+            className="input input-bordered w-full bg-base-100 text-base-content"
+          />
+        </div>
 
-          {/* Total Pages */}
-          <div>
-            <label className="label font-semibold">Total Pages</label>
-            <input
-              type="number"
-              name="total_page"
-              required
-              className="input input-bordered w-full"
-              placeholder="e.g. 300"
-            />
-          </div>
-
-          {/* Book Author */}
-          <div>
-            <label className="label font-semibold">Book Author</label>
-            <input
-              type="text"
-              name="book_author"
-              required
-              className="input input-bordered w-full"
-              placeholder="Author name"
-            />
-          </div>
-
-          {/* User Email */}
-          <div>
-            <label className="label font-semibold">Your Email</label>
-            <input
-              type="email"
-              name="user_email"
-              value={user?.email || ""}
-              readOnly
-              className="input input-bordered w-full bg-base-100 text-base-content"
-            />
-          </div>
-
-          {/* User Name */}
-          <div>
-            <label className="label font-semibold">Your Name</label>
-            <input
-              type="text"
-              name="user_name"
-              value={user?.displayName || ""}
-              readOnly
-              className="input input-bordered w-full bg-base-100 text-base-content"
-            />
-          </div>
-
-          {/* Book Category */}
-          <div>
-            <label className="label font-semibold">Book Category</label>
-            <select
-              name="book_category"
-              required
-              defaultValue=""
-              className="select select-bordered w-full"
-            >
-              <option disabled value="">
-                Select category
-              </option>
-              <option>Fiction</option>
-              <option>Non-Fiction</option>
-              <option>Sci-Fi</option>
-              <option>Mystery</option>
-              <option>Fantasy</option>
-              <option>Biography</option>
-            </select>
-          </div>
-
-          {/* Reading Status */}
-          <div>
-            <label className="label font-semibold">Reading Status</label>
-            <select
-              name="reading_status"
-              required
-              defaultValue=""
-              className="select select-bordered w-full"
-            >
-              <option disabled value="">
-                Select status
-              </option>
-              <option value="Read">Read</option>
-              <option value="Reading">Reading</option>
-              <option value="Want-to-Read">Want-to-Read</option>
-            </select>
-          </div>
-
-          {/* Book Overview */}
-          <div>
-            <label className="label font-semibold">Book Overview</label>
-            <textarea
-              name="book_overview"
-              className="textarea textarea-bordered w-full"
-              placeholder="Write a short summary about the book"
-              required
-            ></textarea>
-          </div>
-
-          {/* Upvote */}
-          <div>
-            <label className="label font-semibold">Upvote</label>
-            <input
-              type="number"
-              value={0}
-              readOnly
-              className="input input-bordered w-full bg-base-100 text-base-content"
-            />
-          </div>
-
-          {/* Submit Button */}
-          <div className="text-center">
-            <button className="btn btn-primary w-full" type="submit">
-              ➕ Add Book
-            </button>
-          </div>
-        </form>
-      </div>
+        <div>
+          <label className="label font-semibold">Book Category</label>
+          <select
+            name="book_category"
+            required
+            defaultValue=""
+            className="select select-bordered w-full"
+          >
+            <option disabled value="">
+              Select category
+            </option>
+            <option>Fiction</option>
+            <option>Non-Fiction</option>
+            <option>Sci-Fi</option>
+            <option>Mystery</option>
+            <option>Fantasy</option>
+            <option>Biography</option>
+          </select>
+        </div>
+        <div>
+          <label className="label font-semibold">Reading Status</label>
+          <select
+            name="reading_status"
+            required
+            defaultValue=""
+            className="select select-bordered w-full"
+          >
+            <option disabled value="">
+              Select status
+            </option>
+            <option value="Read">Read</option>
+            <option value="Reading">Reading</option>
+            <option value="Want-to-Read">Want-to-Read</option>
+          </select>
+        </div>
+        <div className="md:col-span-2">
+          <label className="label font-semibold">Book Overview</label>
+          <textarea
+            name="book_overview"
+            className="textarea textarea-bordered w-full"
+            placeholder="Write a short summary about the book"
+            required
+            rows={4}
+          ></textarea>
+        </div>
+        <div className="md:col-span-2 text-center">
+          <button className="btn btn-primary w-full" type="submit" disabled={clicked}>
+            {clicked ? <p className="loading"></p> : "➕ Add Book"}
+          </button>
+        </div>
+      </form>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default AddBook;
