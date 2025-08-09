@@ -3,11 +3,11 @@ import Swal from "sweetalert2";
 import { motion } from "framer-motion";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../Firebase/firebase.init";
-import { Helmet } from "react-helmet-async";
+import useDocumentTitle from "../Hooks/useDocumentTitle";
 
 const ForgotPassword = () => {
+  useDocumentTitle("Reset Password | Book Vault");
   const [email, setEmail] = useState("");
-
   useEffect(() => {
     const savedEmail = sessionStorage.getItem("resetEmail");
     if (savedEmail) {
@@ -50,9 +50,6 @@ const ForgotPassword = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <Helmet>
-        <title>Reset Password | Book Vault</title>
-      </Helmet>
       <motion.div
         className="w-2xl  shadow-2xl border border-primary rounded-2xl p-8 bg-base-100"
         initial={{ scale: 0.8 }}
