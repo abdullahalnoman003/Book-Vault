@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { Helmet } from "react-helmet-async";
+import useDocumentTitle from "../../Hooks/useDocumentTitle";
 
 const UpdateBook = () => {
+  useDocumentTitle("Update Your Book | Book Vault")
   const { id } = useParams();
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
@@ -90,9 +91,6 @@ const UpdateBook = () => {
 
   return (
     <div className="max-w-3xl mx-auto  my-20 p-6 bg-base-200 rounded-2xl shadow-md">
-      <Helmet>
-        <title>Update Your Book | Book Vault</title>
-      </Helmet>
       <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
         ✏️ Update Book Info
       </h1>

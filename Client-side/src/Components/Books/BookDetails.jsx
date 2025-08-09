@@ -6,10 +6,11 @@ import { BsEmojiTear } from "react-icons/bs";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import useDocumentTitle from "../../Hooks/useDocumentTitle";
 
 
 const BookDetails = () => {
+  useDocumentTitle("Books Details | Book Vault")
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   const [book, setBook] = useState(null);
@@ -160,9 +161,6 @@ const handleReviewDelete = (reviewId) => {
       transition={{ duration: 0.5 }}
       className="flex flex-col items-center justify-center mt-10 mb-10 text-center px-4"
     >
-      <Helmet>
-        <title>Books Details | Book Vault</title>
-      </Helmet>
       <BsEmojiTear className="text-[100px] text-error animate-bounce mb-4" />
       <h2 className="text-3xl md:text-4xl font-extrabold text-error mb-2">
         Book Not Found!

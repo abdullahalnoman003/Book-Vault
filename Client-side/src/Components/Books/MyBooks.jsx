@@ -5,9 +5,10 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
 import axios from "axios";
-import { Helmet } from "react-helmet-async";
+import useDocumentTitle from "../../Hooks/useDocumentTitle";
 
 const MyBooks = () => {
+  useDocumentTitle("My Books | Book Vault");
   const { user } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -98,9 +99,6 @@ const MyBooks = () => {
 
   return (
     <div className="max-w-7xl my-25 mx-auto px-4 py-10">
-      <Helmet>
-        <title>My Books | Book Vault</title>
-      </Helmet>
       <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
         📘 My Collection
       </h1>

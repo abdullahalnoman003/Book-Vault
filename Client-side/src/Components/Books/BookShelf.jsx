@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
-import { Helmet } from "react-helmet-async";
+import useDocumentTitle from "../../Hooks/useDocumentTitle";
 
 const categoryColors = {
   Fiction: "bg-purple-400",
@@ -14,6 +14,7 @@ const categoryColors = {
 };
 
 const BookShelf = () => {
+  useDocumentTitle("📚 Bookshelf | Book Vault")
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -57,9 +58,6 @@ const BookShelf = () => {
 
   return (
     <div className="max-w-7xl my-23 mx-auto p-4 ">
-      <Helmet>
-        <title>📚 Bookshelf | Book Vault</title>
-      </Helmet>
       <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
         📚 Explore the Library
       </h1>
