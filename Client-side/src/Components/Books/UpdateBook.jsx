@@ -10,6 +10,7 @@ const UpdateBook = () => {
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [clicked, setClicked] = useState(false)
 
   useEffect(() => {
     axios
@@ -33,10 +34,10 @@ const UpdateBook = () => {
 
   if (loading) {
     return (
-      <div className="h-80 w-full flex items-center justify-center bg-base-200 rounded-xl mt-8">
+      <div className="h-screen w-full flex items-center justify-center rounded-xl mt-8">
         <div className="text-center space-y-3">
           <span className="loading loading-bars loading-lg text-primary"></span>
-          <p className="text-xl font-semibold text-yellow-800">
+          <p className="text-xl font-semibold text-primary">
             Fetching book info...
           </p>
         </div>
@@ -45,9 +46,9 @@ const UpdateBook = () => {
   }
 
   const handleUpdate = (e) => {
+    setClicked(true);
     e.preventDefault();
     const form = e.target;
-
     const updatedBook = {
       book_title: form.book_title.value,
       cover_photo: form.cover_photo.value,
@@ -72,6 +73,7 @@ const UpdateBook = () => {
             timer: 2000,
             showConfirmButton: false,
           });
+          setClicked(false);
           navigate("/my-books");
         } else {
           Swal.fire({
@@ -81,11 +83,13 @@ const UpdateBook = () => {
             timer: 2000,
             showConfirmButton: false,
           });
+          setClicked(false);
         }
       })
       .catch((error) => {
         Swal.fire("Error", "Something went wrong!", "error");
         console.error(error);
+        setClicked(false);
       });
   };
 
@@ -194,8 +198,8 @@ const UpdateBook = () => {
         </div>
 
         <div className="text-center">
-          <button className="btn btn-success w-full" type="submit">
-            🔄 Update Book
+          <button className="btn btn-success w-full" type="submit" disabled={clicked}>
+            {clicked ? <p className="loading text-black"></p> : "🔄 Update Book"}
           </button>
         </div>
       </form>
