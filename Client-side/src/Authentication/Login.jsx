@@ -11,9 +11,10 @@ import { FaEye } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { auth } from "../Firebase/firebase.init";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import useDocumentTitle from "../Hooks/useDocumentTitle";
 
 const Login = () => {
+  useDocumentTitle("Login | Book Vault")
   const provider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,12 +25,12 @@ const Login = () => {
 
   if (loading) {
     return (
-      <div className="h-screen w-full flex items-center justify-center bg-base-200">
-        <div className="text-center space-y-3">
-          <span className="loading loading-bars loading-lg text-primary"></span>
-          <p className="text-xl font-semibold  text-yellow-800">
-            Login in progress <br />
-            Please Wait...
+      <div className="h-screen w-full flex items-center justify-center bg-gradient-to-br from-base-100 to-base-200">
+        <div className="bg-base-100 p-8 rounded-2xl shadow-lg text-center space-y-4">
+          <span className="loading loading-spinner loading-lg text-primary"></span>
+          <p className="text-xl font-semibold text-primary">
+            Login in progress
+            <span className="loading loading-dots loading-sm ml-2"></span>
           </p>
         </div>
       </div>
@@ -106,17 +107,20 @@ const Login = () => {
 
   return (
     <motion.div
-      className="min-h-screen flex my-25 justify-center items-center py-8 px-4"
+    style={{
+                backgroundImage: `url(https://i.postimg.cc/4dJCP098/pexels-pixabay-235985.jpg)`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover", 
+                backgroundPosition: "center",
+              }}
+      className="min-h-screen flex py-25 justify-center items-center bg-base-400 px-4 "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <Helmet>
-        <title>Login | Book Vault</title>
-      </Helmet>
       <motion.div
-        className="grid md:grid-cols-2 shadow-xl rounded-3xl border border-primary max-w-4xl w-full overflow-hidden"
+        className="grid md:grid-cols-2 shadow-2xl rounded-3xl border border-primary/20 max-w-4xl w-full overflow-hidden backdrop-blur-2xl"
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: "spring", stiffness: 120 }}
@@ -138,17 +142,17 @@ const Login = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl font-extrabold text-center mb-2 text-primary drop-shadow-md">
+          <h1 className="text-4xl font-extrabold text-center mb-2 text-secondary drop-shadow-md">
             🔐 Welcome Back!
           </h1>
-          <p className="text-center text-lg text-base-content mb-10">
+          <p className="text-center text-black text-lg mb-10">
             Login to access your personalized library and manage your favorite
             books.
           </p>
 
           <form onSubmit={handleEmailLogin} className="space-y-4">
             <div className="form-control">
-              <label className="label font-medium">Email</label>
+              <label className="label font-medium text-black">Email</label>
               <input
                 type="email"
                 name="email"
@@ -159,7 +163,7 @@ const Login = () => {
             </div>
 
             <div className="form-control">
-              <label className="label font-medium">Password</label>
+              <label className="label font-medium text-black">Password</label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -179,7 +183,7 @@ const Login = () => {
               <div className="text-sm mt-1 text-right">
                 <Link
                   to="/forgot-password"
-                  className="text-blue-500 hover:underline"
+                  className="text-secondary hover:underline"
                 >
                   Forgot Password?
                 </Link>
@@ -188,7 +192,7 @@ const Login = () => {
 
             <motion.button
               type="submit"
-              className="btn btn-primary w-full text-white font-semibold"
+              className="btn btn-primary w-full  font-semibold hover:shadow-lg transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -200,7 +204,7 @@ const Login = () => {
             <motion.button
               type="button"
               onClick={handleGoogleSignin}
-              className="btn btn-outline w-full flex items-center justify-center gap-2 hover:bg-slate-600 hover:text-white"
+              className="btn btn-outline w-full flex items-center justify-center gap-2 hover:bg-accent-content text-black hover:text-white"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -212,7 +216,7 @@ const Login = () => {
               Don’t have an account?
               <Link
                 to="/register"
-                className="text-blue-600 font-semibold hover:text-pink-500 ml-1"
+                className="text-secondary font-semibold hover:text-accent-content ml-1"
               >
                 Register
               </Link>
