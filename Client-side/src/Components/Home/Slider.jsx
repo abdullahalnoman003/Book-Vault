@@ -59,15 +59,15 @@ const Slider = () => {
         spaceBetween={30}
         slidesPerView={1}
         speed={800}
-        className="rounded-2xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.2)] group"
+        className="rounded-2xl shadow-md  shadow-primary group"
       >
         {slides.map((slide, i) => (
           <SwiperSlide key={i}>
-            <div className="relative group h-[420px] sm:h-[480px] md:h-[540px] overflow-hidden rounded-2xl">
+            <div className="relative  group h-[420px] sm:h-[480px] md:h-[540px] overflow-hidden rounded-2xl">
               <img
                 src={slide.img}
                 alt={slide.title}
-                className="w-full h-full object-cover transform transition-all duration-700 scale-105 group-hover:scale-110"
+                className="w-full  h-full  object-cover transform transition-all duration-700 scale-105 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent  opacity-90 group-hover:opacity-75 transition-opacity duration-300" />
               <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 md:p-10">
