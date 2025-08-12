@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: emerald --default, halloween ;
+  themes: corporate --default, halloween ;
 }
 .active{
   @apply
-  btn-primary
+  text-primary
 }
