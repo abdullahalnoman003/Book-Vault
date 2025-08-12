@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: corporate --default, halloween ;
+  themes: corporate, halloween ;
 }
 .active{
   @apply

@@ -37,7 +37,7 @@ const Hero = () => {
                   sentence="Book Vault"
                   manualMode={false}
                   blurAmount={5}
-                  borderColor="white"
+                  borderColor="primary"
                   animationDuration={2}
                   pauseBetweenAnimations={0.5}
                 />
