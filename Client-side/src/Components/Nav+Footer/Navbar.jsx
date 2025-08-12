@@ -69,36 +69,36 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <NavLink to="/" className="btn">
+              <NavLink to="/" className="font-bold pb-2">
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/bookshelf" className="btn">
+              <NavLink to="/bookshelf" className="font-bold pb-2">
                 Bookshelf
               </NavLink>
             </li>
             {user && (
               <>
                 <li>
-                  <NavLink to="/add-book" className="btn">
+                  <NavLink to="/add-book" className="font-bold pb-2">
                     Add Book
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/my-books" className="btn">
+                  <NavLink to="/my-books" className="font-bold pb-2">
                     My Books
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/profile" className="btn">
+                  <NavLink to="/profile" className="font-bold pb-2">
                     My Profile
                   </NavLink>
                 </li>
               </>
             )}
             <li>
-              <NavLink to="/about-us" className="btn">
+              <NavLink to="/about-us" className="font-bold pb-2">
                 About Us
               </NavLink>
             </li>
@@ -116,38 +116,38 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 flex gap-3">
+        <ul className="menu menu-horizontal px-1  flex gap-3">
           <li>
-            <NavLink to="/" className="btn border border-primary">
+            <NavLink to="/" className="font-bold text-md">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/bookshelf" className="btn border border-primary">
+            <NavLink to="/bookshelf" className="font-bold text-md">
               Bookshelf
             </NavLink>
           </li>
           {user && (
             <>
               <li>
-                <NavLink to="/add-book" className="btn border border-primary">
+                <NavLink to="/add-book" className="font-bold text-md">
                   Add Book
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/my-books" className="btn border border-primary">
+                <NavLink to="/my-books" className="font-bold text-md">
                   My Books
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/profile" className="btn border border-primary">
+                <NavLink to="/profile" className="font-bold text-md">
                   My Profile
                 </NavLink>
               </li>
             </>
           )}
           <li>
-            <NavLink to="/about-us" className="btn border border-primary">
+            <NavLink to="/about-us" className="font-bold text-md">
               About Us
             </NavLink>
           </li>
@@ -162,7 +162,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/login"
-                className="btn border border-primary max-md:text-sm max-md:p-1"
+                className="font-bold text-md max-md:text-sm max-md:p-1"
               >
                 Login
               </NavLink>
@@ -170,7 +170,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/register"
-                className="btn border border-primary max-md:text-sm max-md:p-1"
+                className="font-bold text-md max-md:text-sm max-md:p-1"
               >
                 Register
               </NavLink>
