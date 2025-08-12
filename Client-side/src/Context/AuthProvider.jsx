@@ -27,12 +27,10 @@ const AuthProvider = ({ children }) => {
 
   if (loading) {
     return (
-      <div className="h-screen w-full flex items-center justify-center bg-base-200">
-        {/* <div className="text-center space-y-3">
-          <span className="loading loading-bars loading-lg text-primary"></span>
-          <p className="text-xl font-semibold  text-primary">Authentication in progress <br />
-             Please Wait...</p>
-        </div> */}
+      <div className="h-screen w-full flex items-center justify-center ">
+        <div className="text-center space-y-3">
+          <span className="loading loading-bars loading-lg text-secondary"></span>
+        </div>
       </div>
     );
   }
