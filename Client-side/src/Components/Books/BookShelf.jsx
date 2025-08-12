@@ -115,7 +115,7 @@ const BookShelf = () => {
           No books found matching your search/filter.
         </p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="min-h-screen"><div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {books.map((book) => (
             <div
               key={book._id}
@@ -158,7 +158,8 @@ const BookShelf = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div></div>
+        
       )}
     </div>
   );
